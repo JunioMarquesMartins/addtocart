@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <div>
-      <h1>Add to Cart init</h1>
+    <div className="bg-red-950">
+      <h1 className="">Add to Cart init</h1>
     </div>
   )
 }
