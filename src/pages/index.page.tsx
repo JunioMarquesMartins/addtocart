@@ -1,8 +1,17 @@
 import Image from 'next/image'
-import { Products } from '../data/products'
+
 import { formatPrice } from '../utils/priceFormat'
+import { MinusCircle, PlusCircle } from 'phosphor-react'
+
+import { useSelector, useDispatch } from 'react-redux'
+
+import { decrement, increment, selectProducts } from '../store/products'
 
 export default function Home() {
+  const dispatch = useDispatch()
+
+  const Products = useSelector(selectProducts)
+
   return (
     <main className="min-h-screen">
       <section className="max-w-5xl mx-auto text-white">
@@ -28,10 +37,25 @@ export default function Home() {
                     />
                   </figure>
                   <div className="px-2 text-sm">
-                    <p>{product.description}</p>
+                    <p className="min-h-[7rem]">{product.description}</p>
                     <p>
                       <strong>Price: {formatPrice(product.price)}</strong>
                     </p>
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => dispatch(decrement(product.id))}
+                    >
+                      <MinusCircle size={20} />
+                    </button>
+                    <span>{product.amount}</span>
+                    <button
+                      type="button"
+                      onClick={() => dispatch(increment(product.id))}
+                    >
+                      <PlusCircle size={20} />
+                    </button>
                   </div>
                 </div>
               )

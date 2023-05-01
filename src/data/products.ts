@@ -12,7 +12,7 @@ export const Products: Product[] = [
     image: 'promax.jpg',
     description:
       'Teléfono de 12 GB y 256 GB, Tarjeta Dual, Doble Modo de Espera, I14 Pro Max, Teléfono Móvil de 6,6 Pulgadas, Frontal, 12MP, Trasero, 24MP, 12nm, Procesador EU 100-240V para la Vida Diaria (Púrpura)',
-    price: 1269,
+    price: 1435,
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const Products: Product[] = [
     image: 'honor.jpg',
     description:
       'Lite Smartphone 5G,Telefono movil de 6+128 GB,Snapdragon 695,Pantalla AMOLED Curva de 120 Hz de 6,67”,Cámara Triple de 64MP,Batería Larga duración de 5100 mAh, Dual SIM,Android 12',
-    price: 1199,
+    price: 1199.04,
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ export const Products: Product[] = [
     image: 'oppo.jpg',
     description:
       'Teléfono Móvil Libre, 8GB+256GB, Cámara 50+8+2+32MP, Smartphone Android, Batería 4500mAh, Carga Rápida 80W, Dual SIM - Verde',
-    price: 660,
+    price: 660.56,
   },
   {
     id: 6,
@@ -52,6 +52,6 @@ export const Products: Product[] = [
     image: 'google-pixel.jpg',
     description:
       'Móvil 5G Android Libre con teleobjetivo, Objetivo Gran Angular y batería de 24 Horas de duración - 128GB, Nieve + Pixel Buds A-Series, Blanco',
-    price: 799,
+    price: 799.35,
   },
 ]
