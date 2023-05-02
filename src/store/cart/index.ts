@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, original } from '@reduxjs/toolkit'
 
 export const cart = createSlice({
   name: 'cart',
@@ -7,9 +7,11 @@ export const cart = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      console.log(action.payload)
+      const movieIdIndex = original(state).data.findIndex(
+        (item) => item.id === action.payload.id,
+      )
+      if (movieIdIndex !== -1) state.data.splice(movieIdIndex, 1)
       state.data.push(action.payload)
-      console.log(state.data[0])
     },
   },
 })
