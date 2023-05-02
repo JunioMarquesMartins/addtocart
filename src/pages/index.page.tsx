@@ -8,8 +8,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, selectProducts } from '../store/products'
 import { addToCart, selectCart } from '../store/cart'
 
-import { CartComponent } from '../components/CartComponents'
-
 export default function Home() {
   const dispatch = useDispatch()
 
@@ -76,7 +74,6 @@ export default function Home() {
             })}
           </div>
         </div>
-        {Cart.length && <CartComponent />}
       </section>
     </main>
   )
