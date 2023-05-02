@@ -1,16 +1,20 @@
 import Image from 'next/image'
 
 import { formatPrice } from '../utils/priceFormat'
-import { MinusCircle, PlusCircle } from 'phosphor-react'
+import { MinusCircle, PlusCircle, ShoppingCart } from 'phosphor-react'
 
 import { useSelector, useDispatch } from 'react-redux'
 
 import { decrement, increment, selectProducts } from '../store/products'
+import { addToCart, selectCart } from '../store/cart'
+
+import { CartComponent } from '../components/CartComponents'
 
 export default function Home() {
   const dispatch = useDispatch()
 
   const Products = useSelector(selectProducts)
+  const Cart = useSelector(selectCart)
 
   return (
     <main className="min-h-screen">
@@ -36,25 +40,35 @@ export default function Home() {
                       alt={product.name}
                     />
                   </figure>
-                  <div className="px-2 text-sm">
+                  <div className="px-2 text-sm mb-4">
                     <p className="min-h-[7rem]">{product.description}</p>
                     <p>
                       <strong>Price: {formatPrice(product.price)}</strong>
                     </p>
                   </div>
-                  <div>
+                  <div className="px-2 flex gap-2 justify-between">
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => dispatch(decrement(product.id))}
+                      >
+                        <MinusCircle size={20} />
+                      </button>
+                      <span>{product.amount}</span>
+                      <button
+                        type="button"
+                        onClick={() => dispatch(increment(product.id))}
+                      >
+                        <PlusCircle size={20} />
+                      </button>
+                    </div>
                     <button
+                      onClick={() => dispatch(addToCart(product))}
+                      className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all"
                       type="button"
-                      onClick={() => dispatch(decrement(product.id))}
                     >
-                      <MinusCircle size={20} />
-                    </button>
-                    <span>{product.amount}</span>
-                    <button
-                      type="button"
-                      onClick={() => dispatch(increment(product.id))}
-                    >
-                      <PlusCircle size={20} />
+                      <ShoppingCart size={24} />
+                      <strong>Add to Cart</strong>
                     </button>
                   </div>
                 </div>
@@ -62,6 +76,7 @@ export default function Home() {
             })}
           </div>
         </div>
+        {Cart.length && <CartComponent cart={Cart} />}
       </section>
     </main>
   )
