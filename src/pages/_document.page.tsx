@@ -17,6 +17,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
+
       <body className="bg-gray-100 font-grotesk">
         <Header />
         <Main />
