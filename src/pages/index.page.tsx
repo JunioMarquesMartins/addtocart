@@ -76,7 +76,7 @@ export default function Home() {
             })}
           </div>
         </div>
-        {Cart.length && <CartComponent cart={Cart} />}
+        {Cart.length && <CartComponent />}
       </section>
     </main>
   )

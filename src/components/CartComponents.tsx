@@ -1,8 +1,11 @@
 import Image from 'next/image'
 import { Trash } from 'phosphor-react'
 import { formatPrice } from '../utils/priceFormat'
+import { useSelector } from 'react-redux'
+import { selectCart } from '../store/cart'
 
-export function CartComponent({ cart }) {
+export function CartComponent() {
+  const cart = useSelector(selectCart)
   return (
     <main className="min-h-screen">
       <section className="max-w-5xl mx-auto text-white">
