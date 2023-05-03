@@ -3,10 +3,3 @@ export function dateFormat(date) {
 
   return dateFormatted
 }
-
-export function dateIsExpery(date) {
-  const currentDate = new Date()
-  const experyDate = new Date(date)
-
-  return currentDate > experyDate
-}

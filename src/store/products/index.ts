@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, original } from '@reduxjs/toolkit'
 
 export const dataProducts = createSlice({
   name: 'products',
@@ -12,7 +12,7 @@ export const dataProducts = createSlice({
           'A Teléfono de 12 GB y 256 GB, Tarjeta Dual, Doble Modo de Espera, I14 Pro Max, Teléfono Móvil de 6,6 Pulgadas',
         price: 1435,
         amount: 0,
-        dateOfExpiry: '2024-07-01T22:00:00.000Z',
+        dateOfExpiry: new Date(2024, 6, 2).toLocaleDateString(),
       },
       {
         id: 2,
@@ -22,7 +22,7 @@ export const dataProducts = createSlice({
           'F Galaxy S23 Ultra 5G eSim + Nano SIM Teléfono Móvil Android, 256GB, SIM Free Smartphone, Phantom Black',
         price: 1035,
         amount: 0,
-        dateOfExpiry: '2023-10-01T23:00:00.000Z',
+        dateOfExpiry: new Date(2023, 1, 2).toLocaleDateString(),
       },
       {
         id: 3,
@@ -32,7 +32,7 @@ export const dataProducts = createSlice({
           'B Smartphone de 8+256GB, Pantalla de 6.36” AMOLED de 120Hz, Snapdragon 8 Gen 2, Cámara Leica de 50MP',
         price: 1041,
         amount: 0,
-        dateOfExpiry: '2023-01-31T23:00:00.000Z',
+        dateOfExpiry: new Date(2024, 1, 12).toLocaleDateString(),
       },
       {
         id: 4,
@@ -42,7 +42,7 @@ export const dataProducts = createSlice({
           'C Lite Smartphone 5G,Telefono movil de 6+128 GB,Snapdragon 695,Pantalla AMOLED Curva de 120 Hz de 6,67”',
         price: 1199.04,
         amount: 0,
-        dateOfExpiry: '2023-04-09T22:00:00.000Z',
+        dateOfExpiry: new Date(2023, 8, 3).toLocaleDateString(),
       },
       {
         id: 5,
@@ -52,7 +52,7 @@ export const dataProducts = createSlice({
           'D Teléfono Móvil Libre, 8GB+256GB, Cámara 50+8+2+32MP, Smartphone Android, Batería 4500mAh, Carga Rápida 80W, Dual SIM - Verde',
         price: 660.56,
         amount: 0,
-        dateOfExpiry: '2026-07-04T22:00:00.000Z',
+        dateOfExpiry: new Date(2021, 2, 2).toLocaleDateString(),
       },
       {
         id: 6,
@@ -62,18 +62,24 @@ export const dataProducts = createSlice({
           'E Móvil 5G Android Libre con teleobjetivo, Objetivo Gran Angular y batería de 24 Horas de duración - 128GB',
         price: 799.35,
         amount: 0,
-        dateOfExpiry: '2025-09-10T22:00:00.000Z',
+        dateOfExpiry: new Date(2025, 6, 2).toLocaleDateString(),
       },
     ],
   },
   reducers: {
     increment: (state, action) => {
-      const productIndex = action.payload - 1
-      state.data[productIndex].amount += 1
+      const productIndex = original(state).data.findIndex(
+        (item) => item.id === action.payload,
+      )
+      if (productIndex !== -1 && state.data[productIndex].amount < 10)
+        state.data[productIndex].amount += 1
     },
     decrement: (state, action) => {
-      const productIndex = action.payload - 1
-      state.data[productIndex].amount -= 1
+      const productIndex = original(state).data.findIndex(
+        (item) => item.id === action.payload,
+      )
+      if (productIndex !== -1 && state.data[productIndex].amount > 0)
+        state.data[productIndex].amount -= 1
     },
     sortByName: (state) => {
       state.data.sort((a, b) => a.name.localeCompare(b.name))

@@ -1,6 +1,3 @@
-import Link from 'next/link'
-import { BatteryEmpty } from 'phosphor-react'
-
 export function Footer() {
   return (
     <footer className="bg-black py-10 px-6">
