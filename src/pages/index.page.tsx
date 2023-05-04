@@ -10,6 +10,7 @@ import {
 import { useEffect } from 'react'
 
 import { ProductCard } from '../components/ProductCard'
+import { Button } from '../components/Button'
 
 export default function Home() {
   const dispatch = useDispatch()
@@ -36,18 +37,17 @@ export default function Home() {
               type="text"
               placeholder="Seach"
             />
-            <button
-              className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all disabled:opacity-75 disabled:bg-slate-400 disabled:cursor-not-allowed"
+            <Button
+              text="Sort by Name"
               onClick={() => dispatch(sortByName())}
-            >
-              Sort by Name
-            </button>
-            <button
               className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all disabled:opacity-75 disabled:bg-slate-400 disabled:cursor-not-allowed"
+            ></Button>
+
+            <Button
+              text="Sort by Description bb"
               onClick={() => dispatch(sortByDescription())}
-            >
-              Sort by Description
-            </button>
+              className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all disabled:opacity-75 disabled:bg-slate-400 disabled:cursor-not-allowed"
+            ></Button>
           </div>
 
           <div className="grid grid-cols-3 gap-6">

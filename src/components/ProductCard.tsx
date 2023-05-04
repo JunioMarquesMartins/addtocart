@@ -12,6 +12,7 @@ import { decrement, increment } from '../store/products'
 import { addToCart } from '../store/cart'
 import { SwitchToggle } from './SwitchToggle'
 import { useEffect, useState } from 'react'
+import { Button } from './Button'
 
 export function ProductCard({ product }) {
   const dispatch = useDispatch()
@@ -84,7 +85,16 @@ export function ProductCard({ product }) {
 
         <div>
           <div>
-            <button
+            <Button
+              onClick={() => dispatch(addToCart(product))}
+              text="Add to Cart"
+              className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all disabled:opacity-75 disabled:bg-slate-400 disabled:cursor-not-allowed"
+              disabled={product.amount === 0}
+            >
+              <ShoppingCart size={24} />
+              {/* <strong>Add to Cart</strong> */}
+            </Button>
+            {/* <button
               onClick={() => dispatch(addToCart(product))}
               className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all disabled:opacity-75 disabled:bg-slate-400 disabled:cursor-not-allowed"
               type="button"
@@ -92,7 +102,7 @@ export function ProductCard({ product }) {
             >
               <ShoppingCart size={24} />
               <strong>Add to Cart</strong>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
