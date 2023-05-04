@@ -65,7 +65,7 @@ export function ProductCard({ product }) {
               <strong className="text-[11px] mb-2">
                 Add to Cart as disabled?
               </strong>
-              <SwitchToggle />
+              <SwitchToggle prodId={product.id} />
             </div>
           )}
         </div>

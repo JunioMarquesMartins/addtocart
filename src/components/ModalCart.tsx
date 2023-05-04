@@ -14,7 +14,10 @@ export default function ModalCart() {
 
   const total = formatPrice(
     Cart.reduce((total, product) => {
-      return total + product.price * product.amount
+      if (!product.disabled) {
+        total += product.price * product.amount
+      }
+      return total
     }, 0),
   )
 
@@ -100,7 +103,12 @@ export default function ModalCart() {
                       <tbody>
                         {Cart.map((product) => {
                           return (
-                            <tr key={product.id} className="border-b-2">
+                            <tr
+                              key={product.id}
+                              className={`${
+                                product.disabled ? 'opacity-70 bg-red-200' : ''
+                              } border-b-2`}
+                            >
                               <td>
                                 <Image
                                   width={100}
@@ -110,6 +118,11 @@ export default function ModalCart() {
                                 />
                               </td>
                               <td>
+                                {product.disabled && (
+                                  <strong className="text-red-800">
+                                    Product Disabled
+                                  </strong>
+                                )}
                                 <p>{product.name}</p>
                               </td>
                               <td>{product.amount}</td>
