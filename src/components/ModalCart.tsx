@@ -88,7 +88,7 @@ export default function ModalCart() {
                   >
                     Cart
                   </Dialog.Title>
-                  <div className="mt-2">
+                  <div className="mt-2 overflow-auto md:overflow-visible">
                     <table className="w-full">
                       <thead>
                         <tr className="text-left py-3">

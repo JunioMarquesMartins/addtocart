@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import { formatPrice } from '../utils/priceFormat'
 import { dateFormat } from '../utils/dateFormat'
-import {
-  ArrowElbowDownRight,
-  MinusCircle,
-  PlusCircle,
-  ShoppingCart,
-} from 'phosphor-react'
+import { MinusCircle, PlusCircle, ShoppingCart } from 'phosphor-react'
 import { useDispatch } from 'react-redux'
 import { decrement, increment } from '../store/products'
 import { addToCart } from '../store/cart'
