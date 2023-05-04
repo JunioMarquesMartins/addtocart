@@ -4,10 +4,17 @@ import { useSelector } from 'react-redux'
 import { selectCart } from '../store/cart'
 import { ShoppingCart, Trash } from 'phosphor-react'
 import Image from 'next/image'
-import { formatPrice } from '../utils/priceFormat'
+import { formatPrice, subTotal } from '../utils/priceFormat'
 
 export function PopoverCart() {
   const Cart = useSelector(selectCart)
+
+  const total = formatPrice(
+    Cart.reduce((total, product) => {
+      return total + product.price * product.amount
+    }, 0),
+  )
+
   return (
     <div className=" top-16 w-full max-w-sm px-4">
       <Popover className="relative">
@@ -67,7 +74,11 @@ export function PopoverCart() {
                                 <strong>{formatPrice(product.price)}</strong>
                               </td>
                               <td>
-                                <strong>2300,45</strong>
+                                <strong>
+                                  {formatPrice(
+                                    subTotal(product.price, product.amount),
+                                  )}
+                                </strong>
                               </td>
                               <td>
                                 <button>
@@ -79,7 +90,7 @@ export function PopoverCart() {
                         })}
                         <tr>
                           <td>
-                            Total: <strong>4567,30</strong>
+                            Total: <strong>{total}</strong>
                           </td>
                         </tr>
                       </tbody>

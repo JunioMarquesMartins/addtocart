@@ -7,10 +7,10 @@ export const cart = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      const movieIdIndex = original(state).data.findIndex(
+      const productIndex = original(state).data.findIndex(
         (item) => item.id === action.payload.id,
       )
-      if (movieIdIndex !== -1) state.data.splice(movieIdIndex, 1)
+      if (productIndex !== -1) state.data.splice(productIndex, 1)
       state.data.push(action.payload)
     },
   },

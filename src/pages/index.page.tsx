@@ -21,12 +21,20 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      <section className="max-w-5xl mx-auto text-white">
+      <section className="max-w-5xl py-8 mx-auto text-white">
         <div className="py-14">
-          <h1 className="text-3xl border-b pb-2 mb-8">Phones Deal</h1>
-          <div>
-            <button onClick={() => dispatch(sortByName())}>Sort by Name</button>
-            <button onClick={() => dispatch(sortByDescription())}>
+          <h1 className="text-3xl border-b pb-2 mb-6">Phones Deal</h1>
+          <div className="flex gap-2 mb-6">
+            <button
+              className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all disabled:opacity-75 disabled:bg-slate-400 disabled:cursor-not-allowed"
+              onClick={() => dispatch(sortByName())}
+            >
+              Sort by Name
+            </button>
+            <button
+              className="flex gap-2 bg-blue-400 text-white py-1 px-2 hover:bg-blue-500 transition-all disabled:opacity-75 disabled:bg-slate-400 disabled:cursor-not-allowed"
+              onClick={() => dispatch(sortByDescription())}
+            >
               Sort by Description
             </button>
           </div>
