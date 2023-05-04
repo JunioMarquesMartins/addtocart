@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { BatteryEmpty } from 'phosphor-react'
-import { PopoverCart } from './PopoverCart'
+import ModalCart from './ModalCart'
 
 export function Header() {
   return (
@@ -10,7 +10,7 @@ export function Header() {
         <BatteryEmpty size={32} />
       </Link>
       <nav>
-        <PopoverCart />
+        <ModalCart />
       </nav>
     </header>
   )

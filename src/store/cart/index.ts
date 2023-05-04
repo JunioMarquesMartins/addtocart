@@ -19,10 +19,13 @@ export const cartSlice = createSlice({
       )
       if (productIndex === -1) state.data.splice(productIndex, 1)
     },
+    removeAllProducts: (state) => {
+      state.data.splice(0, state.data.length)
+    },
   },
 })
 
-export const { addToCart, removeToCart } = cartSlice.actions
+export const { addToCart, removeToCart, removeAllProducts } = cartSlice.actions
 export const selectCart = (state) => state.cart.data
 
 export default cartSlice.reducer

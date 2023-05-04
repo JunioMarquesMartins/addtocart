@@ -1,12 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Switch } from '@headlessui/react'
 
 export function SwitchToggle() {
   const [enabled, setEnabled] = useState(false)
-
-  useEffect(() => {
-    console.log(enabled)
-  }, [enabled])
 
   return (
     <div>
