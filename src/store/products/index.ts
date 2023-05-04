@@ -105,9 +105,6 @@ function filtrarProductos(data, query) {
   })
 }
 
-// producto.name.toLowerCase().includes(query.toLowerCase()) ||
-// producto.description.toLowerCase().includes(query.toLowerCase())
-
 export const {
   increment,
   decrement,
@@ -115,6 +112,5 @@ export const {
   sortByDescription,
   sortByQuery,
 } = productSlice.actions
-export const selectProducts = (state) => state.products.data
 
 export default productSlice.reducer
