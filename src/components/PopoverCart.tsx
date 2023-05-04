@@ -1,7 +1,7 @@
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { useSelector } from 'react-redux'
-import { selectCart } from '../store/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeToCart, selectCart } from '../store/cart'
 import { ShoppingCart, Trash } from 'phosphor-react'
 import Image from 'next/image'
 import { formatPrice, subTotal } from '../utils/priceFormat'
@@ -14,6 +14,8 @@ export function PopoverCart() {
       return total + product.price * product.amount
     }, 0),
   )
+
+  const dispatch = useDispatch()
 
   return (
     <div className=" top-16 w-full max-w-sm px-4">
@@ -81,7 +83,11 @@ export function PopoverCart() {
                                 </strong>
                               </td>
                               <td>
-                                <button>
+                                <button
+                                  onClick={() =>
+                                    dispatch(removeToCart(product.id))
+                                  }
+                                >
                                   <Trash size={20} />
                                 </button>
                               </td>

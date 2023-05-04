@@ -101,7 +101,10 @@ export const selectProductosFiltrados = (state) => {
 
 function filtrarProductos(data, query) {
   return data.filter((producto) => {
-    return producto.name.toLowerCase().includes(query.toLowerCase())
+    return (
+      producto.name.toLowerCase().includes(query.toLowerCase()) ||
+      producto.description.toLowerCase().includes(query.toLowerCase())
+    )
   })
 }
 
