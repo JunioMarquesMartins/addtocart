@@ -1,6 +1,6 @@
 import { createSlice, original } from '@reduxjs/toolkit'
 
-export const dataProducts = createSlice({
+export const productSlice = createSlice({
   name: 'products',
   initialState: {
     data: [
@@ -65,6 +65,7 @@ export const dataProducts = createSlice({
         dateOfExpiry: new Date(2025, 6, 2).toLocaleDateString(),
       },
     ],
+    query: '',
   },
   reducers: {
     increment: (state, action) => {
@@ -87,11 +88,33 @@ export const dataProducts = createSlice({
     sortByDescription: (state) => {
       state.data.sort((a, b) => a.description.localeCompare(b.description))
     },
+    sortByQuery: (state, action) => {
+      state.query = action.payload
+    },
   },
 })
 
-export const { increment, decrement, sortByName, sortByDescription } =
-  dataProducts.actions
+export const selectProductosFiltrados = (state) => {
+  const { data, query } = state.products
+  return filtrarProductos(data, query)
+}
+
+function filtrarProductos(data, query) {
+  return data.filter((producto) => {
+    return producto.name.toLowerCase().includes(query.toLowerCase())
+  })
+}
+
+// producto.name.toLowerCase().includes(query.toLowerCase()) ||
+// producto.description.toLowerCase().includes(query.toLowerCase())
+
+export const {
+  increment,
+  decrement,
+  sortByName,
+  sortByDescription,
+  sortByQuery,
+} = productSlice.actions
 export const selectProducts = (state) => state.products.data
 
-export default dataProducts.reducer
+export default productSlice.reducer
