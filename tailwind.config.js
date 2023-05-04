@@ -9,6 +9,10 @@ module.exports = {
       },
 
       colors: {
+        greenDroid: {
+          100: '#a4c639',
+          200: '#839e2d',
+        },
         gray: {
           100: '#181818',
           200: '#343333',

@@ -48,7 +48,7 @@ export default function ModalCart() {
       {Cart.length > 0 && (
         <button type="button" onClick={openModal}>
           <div className="relative">
-            <span className="absolute top-0 right-[-6px] bg-white text-gray-100 rounded-full text-[.7rem] w-[18px] h-[18px] flex items-center justify-center">
+            <span className="absolute top-0 right-[-6px] bg-greenDroid-100 text-gray-100 rounded-full text-[.7rem] w-[18px] h-[18px] flex items-center justify-center">
               <strong>{Cart?.length}</strong>
             </span>
             <ShoppingCart size={32} />
