@@ -6,4 +6,4 @@
 ## To run the test 🧪
 `npm run test:watch`
 
-[See project online in vercel >>>](https://addtocart-olive.vercel.app/)
+[See project online in vercel >>>](https://addtocart-h0y32qffh-juniomarquesmartins.vercel.app/)
